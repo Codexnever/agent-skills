@@ -350,6 +350,8 @@ def main(
     except weaviate.exceptions.WeaviateConnectionError as e:
         print(f"Error: Connection failed - {e}", file=sys.stderr)
         raise typer.Exit(1)
+    except typer.Exit:
+        raise
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         raise typer.Exit(1)
